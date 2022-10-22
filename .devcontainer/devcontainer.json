@@ -1,0 +1,41 @@
+{
+	"name": "Alpine",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"VARIANT": "3.16"
+		}
+	},
+	"remoteUser": "vscode",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"rogalmic.bash-debug",
+				"timonwong.shellcheck",
+				"foxundermoon.shell-format",
+				"tetradresearch.vscode-h2o"
+			]
+		}
+	},
+	"settings": {
+		"shellformat.path": "/usr/bin/shfmt",
+		"shellcheck.executablePath": "/usr/bin/shellcheck",
+		"editor.formatOnSave": true,
+		"launch": {
+			"version": "0.2.0",
+			"configurations": [
+				{
+					"type": "bashdb",
+					"request": "launch",
+					"name": "Bash-Debug",
+					"terminalKind": "integrated",
+					"cwd": "${workspaceFolder}",
+					"program": "${command:SelectScriptName}",
+					"args": [
+						"--basename"
+					]
+				}
+			]
+		}
+	}
+}
